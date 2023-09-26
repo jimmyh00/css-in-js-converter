@@ -2,7 +2,11 @@
   "name": "css-in-js-converter",
   "displayName": "css-in-js-converter",
   "description": "This is a converter that can convert between CSS-in-JS code and SCSS code!",
-  "version": "0.0.1",
+  "version": "0.0.2",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jimmyh00/css-in-js-converter.git"
+  },
   "engines": {
     "vscode": "^1.82.0"
   },
