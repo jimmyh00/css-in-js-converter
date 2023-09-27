@@ -3,7 +3,7 @@
   "publisher": "jimmy-huang",
   "displayName": "CSS-in-JS converter",
   "description": "This is a converter that can convert between CSS-in-JS code and SCSS code!",
-  "version": "0.0.10",
+  "version": "0.0.11",
   "icon": "images/icon.png",
   "repository": {
     "type": "git",
@@ -23,7 +23,7 @@
     "commands": [
       {
         "command": "cssInJsConverter.convert",
-        "title": "Convert between CSS-in-JS and SCSS 22"
+        "title": "Convert between CSS-in-JS and SCSS"
       }
     ]
   },
