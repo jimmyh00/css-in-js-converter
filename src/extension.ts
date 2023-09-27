@@ -1,9 +1,8 @@
 import * as vscode from 'vscode'
-
-const JSON5 = require('json5')
-const postcss = require('postcss')
-const postcssJs = require('postcss-js')
-const prettier = require('prettier')
+import * as JSON5 from 'json5'
+import * as postcss from 'postcss'
+import * as postcssJs from 'postcss-js'
+import * as prettier from 'prettier'
 
 // jss => scss
 async function jss2scss(jsxObject: any) {
@@ -35,7 +34,7 @@ async function scss2jss(text: string) {
 }
 
 export function activate(context: vscode.ExtensionContext) {
-  let disposable = vscode.commands.registerCommand('css-in-js-converter.convert', async () => {
+  let disposable = vscode.commands.registerCommand('cssInJsConverter.convert', async () => {
     const activeEditor = vscode.window.activeTextEditor
     if (!activeEditor) {
       return
@@ -45,25 +44,20 @@ export function activate(context: vscode.ExtensionContext) {
 
     let jsxObject
     try {
-      console.log('text: 222', text)
       jsxObject = JSON5.parse(text)
     } catch (error) {
       try {
         jsxObject = JSON5.parse(`{${text}}`)
-      } catch (error) {
-        console.log('JSON5.parse error:', error)
-      }
+      } catch (error) {}
     }
 
     if (jsxObject) {
       text = await jss2scss(jsxObject)
     } else {
       text = await scss2jss(text)
-      console.log('text:', text)
     }
 
     activeEditor.edit(editBuilder => {
-      console.log('text:', text)
       editBuilder.replace(selection, text)
     })
   })

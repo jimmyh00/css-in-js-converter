@@ -1,9 +1,10 @@
 {
   "name": "css-in-js-converter",
   "publisher": "jimmy-huang",
-  "displayName": "css-in-js-converter",
+  "displayName": "CSS-in-JS converter",
   "description": "This is a converter that can convert between CSS-in-JS code and SCSS code!",
-  "version": "0.0.3",
+  "version": "0.0.10",
+  "icon": "images/icon.png",
   "repository": {
     "type": "git",
     "url": "https://github.com/jimmyh00/css-in-js-converter.git"
@@ -14,32 +15,37 @@
   "categories": [
     "Other"
   ],
-  "activationEvents": [],
-  "main": "./out/extension.js",
+  "activationEvents": [
+    "onCommand:extension.cssInJsConverter.convert"
+  ],
+  "main": "./dist/extension.js",
   "contributes": {
     "commands": [
       {
-        "command": "css-in-js-converter.convert",
-        "title": "convert between CSS-in-JS and SCSS"
+        "command": "cssInJsConverter.convert",
+        "title": "Convert between CSS-in-JS and SCSS 22"
       }
     ]
   },
   "scripts": {
     "vscode:prepublish": "yarn run compile",
-    "compile": "tsc -p ./",
+    "compile": "webpack --mode production",
     "watch": "tsc -watch -p ./",
     "pretest": "yarn run compile && yarn run lint",
     "lint": "eslint src --ext ts",
-    "test": "node ./out/test/runTest.js"
+    "test": ""
   },
   "devDependencies": {
-    "@types/node": "16.x",
+    "@types/node": "^20.7.1",
     "@types/vscode": "^1.82.0",
     "@typescript-eslint/eslint-plugin": "^6.4.1",
     "@typescript-eslint/parser": "^6.4.1",
     "@vscode/test-electron": "^2.3.4",
     "eslint": "^8.47.0",
-    "typescript": "^5.1.6"
+    "ts-loader": "^9.4.4",
+    "typescript": "^5.1.6",
+    "webpack": "^5.88.2",
+    "webpack-cli": "^5.1.4"
   },
   "dependencies": {
     "json5": "^2.2.3",
